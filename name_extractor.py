@@ -1,4 +1,4 @@
- '''
+'''
 The program will use urllib to read the HTML from the data files below, extract the href= vaues from the anchor tags, scan
 for a tag that is in a particular position relative to the first name in the list, follow that link  and repeat the process
 a number of times and report the last name you find.
@@ -10,7 +10,7 @@ name that you retrieve.
 # 'a' determines how many times will the loop repeat (actually it's second integer of 'range' function)
 # def html_parser(url, a):
 url = input('Input url: ')
-a = input('Input desired number of loops: ')
+a = int(input('Input desired number of loops: '))
 
 import urllib.request, urllib.parse, urllib.error
 from bs4 import BeautifulSoup
@@ -26,8 +26,8 @@ soup = BeautifulSoup(html, 'html.parser')
 tags = soup('a')
 print(tags[17].contents)
 for x in range(1,a):
-url = tags[17].get('href', None)
-html = urllib.request.urlopen(url, context=ctx).read()
-soup = BeautifulSoup(html, 'html.parser')
-tags = soup('a')
-print(tags[17].contents)
+    url = tags[17].get('href', None)
+    html = urllib.request.urlopen(url, context=ctx).read()
+    soup = BeautifulSoup(html, 'html.parser')
+    tags = soup('a')
+    print(tags[17].contents)
