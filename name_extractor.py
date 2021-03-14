@@ -9,25 +9,25 @@ name that you retrieve.
 
 # 'a' determines how many times will the loop repeat (actually it's second integer of 'range' function)
 # def html_parser(url, a):
-  url = input('Input url: ')
-  a = input('Input desired number of loops: ')
+url = input('Input url: ')
+a = input('Input desired number of loops: ')
 
-  import urllib.request, urllib.parse, urllib.error
-  from bs4 import BeautifulSoup
-  import ssl
+import urllib.request, urllib.parse, urllib.error
+from bs4 import BeautifulSoup
+import ssl
 
 # Ignore SSL certificate errors
-  ctx = ssl.create_default_context()
-  ctx.check_hostname = False
-  ctx.verify_mode = ssl.CERT_NONE
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
-  html = urllib.request.urlopen(url, context=ctx).read()
-  soup = BeautifulSoup(html, 'html.parser')
-  tags = soup('a')
-  print(tags[17].contents)
-  for x in range(1,a):
-    url = tags[17].get('href', None)
-    html = urllib.request.urlopen(url, context=ctx).read()
-    soup = BeautifulSoup(html, 'html.parser')
-    tags = soup('a')
-    print(tags[17].contents)
+html = urllib.request.urlopen(url, context=ctx).read()
+soup = BeautifulSoup(html, 'html.parser')
+tags = soup('a')
+print(tags[17].contents)
+for x in range(1,a):
+url = tags[17].get('href', None)
+html = urllib.request.urlopen(url, context=ctx).read()
+soup = BeautifulSoup(html, 'html.parser')
+tags = soup('a')
+print(tags[17].contents)
