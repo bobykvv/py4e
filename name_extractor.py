@@ -8,7 +8,10 @@ name that you retrieve.
 '''
 
 # 'a' determines how many times will the loop repeat (actually it's second integer of 'range' function)
-def html_parser(url, a):
+# def html_parser(url, a):
+  url = input('Input url: ')
+  a = input('Input desired number of loops: ')
+
   import urllib.request, urllib.parse, urllib.error
   from bs4 import BeautifulSoup
   import ssl
